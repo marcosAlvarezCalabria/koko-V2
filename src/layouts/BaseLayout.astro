@@ -1,0 +1,44 @@
+---
+import "../styles/globals.css";
+import { businessInfo, siteConfig, siteUrl } from "@/data/site";
+import { buildLocalBusinessJsonLd } from "@/lib/seo/buildLocalBusinessJsonLd";
+
+const title = "Koko Atelier Galway";
+const description = "Thoughtful clothing alterations and tailoring in Galway.";
+const jsonLd = buildLocalBusinessJsonLd(businessInfo);
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
+const openGraphImages = businessInfo.image.map((image) => new URL(image, siteUrl).toString());
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="application-name" content={siteConfig.businessName} />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Koko Atelier" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content={siteConfig.businessName} />
+    <meta property="og:locale" content="en_IE" />
+    {openGraphImages.map((image) => <meta property="og:image" content={image} />)}
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {openGraphImages.map((image) => <meta name="twitter:image" content={image} />)}
+    <link rel="icon" href="/icons/koko-mark.svg" />
+    <link rel="apple-touch-icon" href="/icons/koko-mark.svg" />
+  </head>
+  <body>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <slot />
+  </body>
+</html>

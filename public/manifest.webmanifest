@@ -1,0 +1,17 @@
+{
+  "name": "Koko Atelier Galway",
+  "short_name": "Koko Atelier",
+  "description": "Public website for Koko Atelier Galway.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#102a43",
+  "icons": [
+    {
+      "src": "/icons/koko-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}

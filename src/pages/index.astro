@@ -1,0 +1,26 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { Contact } from "@/components/Contact";
+import { Footer } from "@/components/Footer";
+import { Gallery } from "@/components/Gallery";
+import { Header } from "@/components/Header";
+import { Hero } from "@/components/Hero";
+import { HowItWorks } from "@/components/HowItWorks";
+import { MeetLiudmyla } from "@/components/MeetLiudmyla";
+import { Prices } from "@/components/Prices";
+import { Services } from "@/components/Services";
+---
+
+<BaseLayout>
+  <Header />
+  <main>
+    <Hero client:load />
+    <MeetLiudmyla />
+    <Services />
+    <Gallery client:load />
+    <HowItWorks />
+    <Prices client:load />
+    <Contact />
+  </main>
+  <Footer />
+</BaseLayout>

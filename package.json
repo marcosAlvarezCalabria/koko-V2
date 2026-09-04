@@ -1,0 +1,37 @@
+{
+  "name": "koko-atelier-public-astro",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "lint": "eslint .",
+    "typecheck": "astro check && tsc --noEmit",
+    "test": "vitest run",
+    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm build"
+  },
+  "dependencies": {
+    "@astrojs/react": "^4.3.0",
+    "@astrojs/tailwind": "^6.0.2",
+    "astro": "^5.15.0",
+    "lucide-react": "^0.468.0",
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "latest",
+    "@eslint/js": "^9.39.5",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.39.5",
+    "globals": "latest",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "latest",
+    "vitest": "^4.1.10",
+    "autoprefixer": "latest",
+    "tailwindcss": "^3.4.17"
+  }
+}
