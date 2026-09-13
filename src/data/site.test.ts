@@ -3,7 +3,14 @@ import { join } from "node:path";
 
 import { describe, expect, it } from "vitest";
 
-import { openingHours, priceGroups, services, siteConfig } from "./site";
+import {
+  businessInfo,
+  openingHours,
+  priceGroups,
+  services,
+  siteConfig,
+  siteUrl
+} from "./site";
 
 describe("site content", () => {
   it("brands the demo without inventing contact details", () => {
@@ -24,6 +31,20 @@ describe("site content", () => {
       expect(
         existsSync(join(process.cwd(), "public", service.image.slice(1)))
       ).toBe(true);
+    }
+  });
+
+  it("provides absolute, local brand assets for search and social previews", () => {
+    expect(businessInfo.logo).toBe(`${siteUrl}/icons/koko-mark.svg`);
+    expect(businessInfo.image).toEqual([
+      `${siteUrl}/images/hero-video-poster.jpg`
+    ]);
+
+    for (const assetUrl of [businessInfo.logo, ...businessInfo.image]) {
+      const { pathname } = new URL(assetUrl);
+      expect(existsSync(join(process.cwd(), "public", pathname.slice(1)))).toBe(
+        true
+      );
     }
   });
 });

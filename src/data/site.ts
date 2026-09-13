@@ -81,8 +81,8 @@ export interface BusinessInfo {
 export const businessInfo: BusinessInfo = {
   name: "Koko Atelier",
   url: siteUrl,
-  logo: "",
-  image: [],
+  logo: `${siteUrl}/icons/koko-mark.svg`,
+  image: [`${siteUrl}/images/hero-video-poster.jpg`],
   telephone: "+353 85 200 9225",
   email: "To be confirmed",
   streetAddress: "Unit 10, Corbett Court Shopping Centre, Williamsgate Street",

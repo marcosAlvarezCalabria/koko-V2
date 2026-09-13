@@ -1,0 +1,30 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Page not found | Koko Atelier Galway"
+  description="The requested page could not be found on the Koko Atelier Galway website."
+  noindex
+>
+  <main class="flex min-h-screen items-center bg-brand-900 px-6 py-16 text-white">
+    <div class="container-page">
+      <p class="text-sm font-medium uppercase tracking-wider text-brand-100">
+        404
+      </p>
+      <h1 class="mt-3 max-w-2xl text-4xl font-semibold tracking-tight md:text-6xl">
+        Page not found
+      </h1>
+      <p class="mt-5 max-w-xl text-lg text-brand-100">
+        The page you requested does not exist. Return to the atelier to view our
+        alteration services, guide prices and Galway studio details.
+      </p>
+      <a
+        href="/"
+        class="mt-8 inline-flex min-h-12 items-center justify-center rounded-xl bg-white px-5 py-3 text-sm font-semibold text-brand-900 transition-colors hover:bg-brand-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+      >
+        Return to Koko Atelier
+      </a>
+    </div>
+  </main>
+</BaseLayout>

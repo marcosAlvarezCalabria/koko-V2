@@ -2,12 +2,24 @@
 import "../styles/globals.css";
 import { businessInfo, siteConfig, siteUrl } from "@/data/site";
 import { buildLocalBusinessJsonLd } from "@/lib/seo/buildLocalBusinessJsonLd";
+import { siteMetadata } from "@/lib/seo/siteMetadata";
 
-const title = "Koko Atelier Galway";
-const description = "Thoughtful clothing alterations and tailoring in Galway.";
+interface Props {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+}
+
+const {
+  title = siteMetadata.title,
+  description = siteMetadata.description,
+  noindex = false
+} = Astro.props;
 const jsonLd = buildLocalBusinessJsonLd(businessInfo);
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
-const openGraphImages = businessInfo.image.map((image) => new URL(image, siteUrl).toString());
+const openGraphImages = businessInfo.image.map((image) =>
+  new URL(image, siteUrl).toString()
+);
 ---
 
 <!doctype html>
@@ -17,6 +29,7 @@ const openGraphImages = businessInfo.image.map((image) => new URL(image, siteUrl
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <meta name="application-name" content={siteConfig.businessName} />
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="canonical" href={canonicalUrl} />
@@ -28,17 +41,33 @@ const openGraphImages = businessInfo.image.map((image) => new URL(image, siteUrl
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:site_name" content={siteConfig.businessName} />
     <meta property="og:locale" content="en_IE" />
-    {openGraphImages.map((image) => <meta property="og:image" content={image} />)}
+    {
+      openGraphImages.map((image) => (
+        <>
+          <meta property="og:image" content={image} />
+          <meta property="og:image:alt" content={siteMetadata.socialImageAlt} />
+        </>
+      ))
+    }
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    {openGraphImages.map((image) => <meta name="twitter:image" content={image} />)}
+    {
+      openGraphImages.map((image) => (
+        <meta name="twitter:image" content={image} />
+      ))
+    }
+    <meta name="twitter:image:alt" content={siteMetadata.socialImageAlt} />
     <link rel="icon" href="/icons/koko-mark.svg" />
     <link rel="apple-touch-icon" href="/icons/koko-mark.svg" />
   </head>
   <body>
-    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(jsonLd)}
+    />
     <slot />
   </body>
 </html>
