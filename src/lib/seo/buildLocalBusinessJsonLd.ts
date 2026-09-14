@@ -3,7 +3,7 @@ import type { BusinessInfo } from "@/data/site";
 export function buildLocalBusinessJsonLd(info: BusinessInfo): Record<string, unknown> {
   const jsonLd: Record<string, unknown> = {
     "@context": "https://schema.org",
-    "@type": "TailorShop",
+    "@type": "LocalBusiness",
     name: info.name,
     url: info.url,
     address: buildAddress(info)

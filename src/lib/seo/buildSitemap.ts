@@ -5,17 +5,25 @@ export interface SitemapEntry {
   priority: number;
 }
 
-export function buildSitemap(siteUrl: string, paths: readonly string[]): SitemapEntry[] {
+export function buildSitemap(
+  siteUrl: string,
+  paths: readonly string[],
+  lastModified = new Date("2026-09-14T00:00:00.000Z")
+): SitemapEntry[] {
   return paths.map((path) => ({
     url: joinUrl(siteUrl, path),
-    lastModified: new Date("2026-08-17T00:00:00.000Z"),
+    lastModified,
     changeFrequency: "weekly",
     priority: path === "/" ? 1 : 0.7
   }));
 }
 
-export function buildSitemapXml(siteUrl: string, paths: readonly string[]): string {
-  const entries = buildSitemap(siteUrl, paths);
+export function buildSitemapXml(
+  siteUrl: string,
+  paths: readonly string[],
+  lastModified?: Date
+): string {
+  const entries = buildSitemap(siteUrl, paths, lastModified);
   const urls = entries
     .map(
       (entry) => `  <url>

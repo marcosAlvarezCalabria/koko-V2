@@ -3,37 +3,43 @@ export const siteConfig = { businessName: "Koko Atelier Galway", tagline: "Cloth
 export const services = [
   {
     title: "Trousers",
+    href: "/trouser-jeans-alterations-galway/",
     description: "Shortening, waist adjustments, tapering and repairs.",
     image: "/images/services/trousers.png",
     imageAlt: "Grey trousers being measured for an alteration"
   },
   {
     title: "Dresses",
+    href: "/dress-alterations-galway/",
     description: "Hems, resizing, zip replacement and restyling.",
     image: "/images/services/dresses.png",
     imageAlt: "Black dress being altered at a sewing machine"
   },
   {
     title: "Suits",
+    href: "/suit-alterations-galway/",
     description: "Jacket, sleeve and trouser alterations for a better fit.",
     image: "/images/services/suits.png",
     imageAlt: "Navy suit jacket pinned for alterations"
   },
   {
     title: "Bridal",
+    href: "/bridal-alterations-galway/",
     description: "Careful fitting and alterations for wedding garments.",
     image: "/images/services/bridal.png",
     imageAlt: "Bridal lace, pearls and hand-sewing needle"
   },
   {
-    title: "Coats & Jackets",
-    description: "Sleeves, linings, zips and general repairs.",
+    title: "Clothing Alterations",
+    href: "/clothing-alterations-galway/",
+    description: "Everyday fitting, hems, sleeves and general garment repairs.",
     image: "/images/services/coats-jackets.png",
     imageAlt: "Green coat zip being checked by a tailor"
   },
   {
-    title: "Express Repairs",
-    description: "Fast turnaround for selected urgent alterations.",
+    title: "Zip Repairs",
+    href: "/zip-repairs-galway/",
+    description: "Zip assessment, replacement and related fastening repairs.",
     image: "/images/services/express-repairs.png",
     imageAlt: "Thread, scissors and measuring tape prepared for repairs"
   }

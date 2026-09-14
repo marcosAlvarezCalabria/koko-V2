@@ -2,6 +2,7 @@ import { existsSync } from "node:fs";
 import { join } from "node:path";
 
 import { describe, expect, it } from "vitest";
+import { servicePaths } from "./servicePages";
 
 import {
   businessInfo,
@@ -23,6 +24,12 @@ describe("site content", () => {
     expect(services.length).toBeGreaterThan(0);
     expect(priceGroups.length).toBeGreaterThan(0);
     expect(openingHours.length).toBeGreaterThan(0);
+  });
+
+  it("links every homepage service to a discoverable local service page", () => {
+    for (const service of services) {
+      expect(servicePaths).toContain(service.href);
+    }
   });
 
   it("provides a real example image for every public service", () => {

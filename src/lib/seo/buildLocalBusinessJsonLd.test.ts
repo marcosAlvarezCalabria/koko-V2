@@ -27,10 +27,10 @@ function makeBusinessInfo(overrides: Partial<BusinessInfo> = {}): BusinessInfo {
 }
 
 describe("buildLocalBusinessJsonLd", () => {
-  it("uses the schema.org TailorShop context with the input name and url", () => {
+  it("uses the supported schema.org LocalBusiness type with the input name and url", () => {
     expect(buildLocalBusinessJsonLd(makeBusinessInfo({ name: "Custom Name", url: "https://example.test" }))).toMatchObject({
       "@context": "https://schema.org",
-      "@type": "TailorShop",
+      "@type": "LocalBusiness",
       name: "Custom Name",
       url: "https://example.test"
     });

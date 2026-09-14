@@ -21,4 +21,14 @@ describe("buildSitemap", () => {
   it("returns an empty sitemap for an empty path list", () => {
     expect(buildSitemap("https://kokoatelier.ie", [])).toEqual([]);
   });
+
+  it("uses the supplied meaningful update date for every generated entry", () => {
+    const lastModified = new Date("2026-09-14T00:00:00.000Z");
+
+    expect(buildSitemap("https://kokoatelier.ie", ["/", "/services"], lastModified))
+      .toEqual(expect.arrayContaining([
+        expect.objectContaining({ lastModified }),
+        expect.objectContaining({ lastModified })
+      ]));
+  });
 });

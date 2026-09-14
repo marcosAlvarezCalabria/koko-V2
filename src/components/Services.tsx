@@ -21,6 +21,7 @@ export function Services() {
         <div className="mt-10 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (
             <article key={service.title} className="group">
+              <a href={service.href} className="block focus-visible:rounded-2xl">
               <div className="relative aspect-[6/5] overflow-hidden rounded-2xl bg-slate-100">
                 <ParallaxImage
                   src={service.image}
@@ -33,6 +34,7 @@ export function Services() {
               <h3 className="mt-5 text-xl font-medium text-brand-900">
                 {service.title}
               </h3>
+              </a>
               <p className="mt-2 max-w-sm text-slate-600">
                 {service.description}
               </p>

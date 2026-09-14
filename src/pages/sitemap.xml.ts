@@ -1,7 +1,8 @@
 import { siteUrl } from "@/data/site";
+import { servicePaths } from "@/data/servicePages";
 import { buildSitemapXml } from "@/lib/seo/buildSitemap";
 
-const PUBLIC_PATHS = ["/"] as const;
+const PUBLIC_PATHS = ["/", ...servicePaths] as const;
 
 export function GET() {
   return new Response(buildSitemapXml(siteUrl, PUBLIC_PATHS), {
