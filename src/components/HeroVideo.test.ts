@@ -16,5 +16,7 @@ describe("HeroVideo", () => {
     expect(videoSource).toContain('document.addEventListener("visibilitychange"');
     expect(videoSource).toContain("autoPlay");
     expect(videoSource).toContain("playsInline");
+    expect(videoSource).toContain("onTimeUpdate");
+    expect(videoSource).toContain("isHeroLogoVisible");
   });
 });

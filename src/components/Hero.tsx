@@ -1,12 +1,18 @@
+"use client";
+
+import { useState } from "react";
+
 import { HeroVideo } from "@/components/HeroVideo";
 import { LocationMarquee } from "@/components/LocationMarquee";
 import { ServiceMarquee } from "@/components/ServiceMarquee";
 import { siteConfig } from "@/data/site";
 
 export function Hero() {
+  const [isLogoVisible, setIsLogoVisible] = useState(false);
+
   return (
     <section className="relative min-h-[calc(100svh-4.5rem)] overflow-hidden bg-black">
-      <HeroVideo />
+      <HeroVideo onLogoVisibilityChange={setIsLogoVisible} />
 
       <div className="absolute inset-0 bg-gradient-to-r from-black/72 via-black/35 to-black/5" />
       <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-black/55 to-transparent" />
@@ -20,7 +26,11 @@ export function Hero() {
       </div>
 
       <div className="container-page relative flex min-h-[calc(100svh-4.5rem)] items-center">
-        <div className="max-w-2xl text-white">
+        <div
+          className={`max-w-2xl text-white transition-opacity duration-300 ease-out motion-reduce:opacity-100 motion-reduce:transition-none ${
+            isLogoVisible ? "opacity-0" : "opacity-100"
+          }`}
+        >
           <h1 className="text-4xl font-semibold leading-tight tracking-tight md:text-6xl">
             {siteConfig.tagline}
           </h1>

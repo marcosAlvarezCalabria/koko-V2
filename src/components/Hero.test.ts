@@ -11,10 +11,18 @@ describe("Hero", () => {
     expect(heroSource).toContain("<ServiceMarquee");
     expect(heroSource).toContain("bg-gradient-to-r");
     expect(heroSource).toContain("container-page relative flex");
-    expect(heroSource).toContain("<HeroVideo />");
+    expect(heroSource).toContain("<HeroVideo");
     expect(heroSource).not.toContain("<canvas");
     expect(heroSource).not.toContain("h-[500vh]");
     expect(heroSource).not.toContain("sticky top-0");
     expect(heroSource).not.toContain('addEventListener("scroll"');
+  });
+
+  it("fades only the central copy while the video logo is visible", () => {
+    expect(heroSource).toContain("useState(false)");
+    expect(heroSource).toContain("onLogoVisibilityChange={setIsLogoVisible}");
+    expect(heroSource).toContain('isLogoVisible ? "opacity-0" : "opacity-100"');
+    expect(heroSource).toContain("motion-reduce:transition-none");
+    expect(heroSource).toContain("motion-reduce:opacity-100");
   });
 });

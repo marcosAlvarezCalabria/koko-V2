@@ -2,15 +2,25 @@
 
 import { useEffect, useRef } from "react";
 
+import { isHeroLogoVisible } from "@/domain/hero/heroTimeline";
+
 const HERO_VIDEO_PLAYBACK_RATE = 0.65;
+
+type HeroVideoProps = {
+  onLogoVisibilityChange?: (isVisible: boolean) => void;
+};
 
 function applyPlaybackRate(video: HTMLVideoElement) {
   video.defaultPlaybackRate = HERO_VIDEO_PLAYBACK_RATE;
   video.playbackRate = HERO_VIDEO_PLAYBACK_RATE;
 }
 
-export function HeroVideo() {
+export function HeroVideo({ onLogoVisibilityChange }: HeroVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  const syncLogoVisibility = (video: HTMLVideoElement) => {
+    onLogoVisibilityChange?.(isHeroLogoVisible(video.currentTime));
+  };
 
   useEffect(() => {
     const video = videoRef.current;
@@ -61,7 +71,12 @@ export function HeroVideo() {
       poster="/images/hero-frames/frame-032.webp"
       src="/videos/hero-scroll.mp4"
       className="absolute inset-0 h-full w-full object-cover motion-reduce:hidden"
-      onLoadedMetadata={(event) => applyPlaybackRate(event.currentTarget)}
+      onLoadedMetadata={(event) => {
+        applyPlaybackRate(event.currentTarget);
+        syncLogoVisibility(event.currentTarget);
+      }}
+      onSeeked={(event) => syncLogoVisibility(event.currentTarget)}
+      onTimeUpdate={(event) => syncLogoVisibility(event.currentTarget)}
     />
   );
 }
