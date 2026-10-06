@@ -16,7 +16,14 @@ describe("HeroVideo", () => {
     expect(videoSource).toContain('document.addEventListener("visibilitychange"');
     expect(videoSource).toContain("autoPlay");
     expect(videoSource).toContain("playsInline");
+    expect(videoSource).toContain('src="/videos/hero-scroll-compact.mp4"');
     expect(videoSource).toContain("onTimeUpdate");
     expect(videoSource).toContain("isHeroLogoVisible");
+  });
+
+  it("shows the complete logo frame on mobile without changing the desktop crop", () => {
+    expect(videoSource).toContain("useState(false)");
+    expect(videoSource).toContain('isLogoVisible ? "object-contain md:object-cover" : "object-cover"');
+    expect(videoSource).toContain("setIsLogoVisible");
   });
 });

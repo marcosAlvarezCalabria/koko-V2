@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { isHeroLogoVisible } from "@/domain/hero/heroTimeline";
 
@@ -17,9 +17,13 @@ function applyPlaybackRate(video: HTMLVideoElement) {
 
 export function HeroVideo({ onLogoVisibilityChange }: HeroVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isLogoVisible, setIsLogoVisible] = useState(false);
 
   const syncLogoVisibility = (video: HTMLVideoElement) => {
-    onLogoVisibilityChange?.(isHeroLogoVisible(video.currentTime));
+    const nextLogoVisibility = isHeroLogoVisible(video.currentTime);
+
+    setIsLogoVisible(nextLogoVisibility);
+    onLogoVisibilityChange?.(nextLogoVisibility);
   };
 
   useEffect(() => {
@@ -69,8 +73,10 @@ export function HeroVideo({ onLogoVisibilityChange }: HeroVideoProps) {
       playsInline
       aria-hidden="true"
       poster="/images/hero-frames/frame-032.webp"
-      src="/videos/hero-scroll.mp4"
-      className="absolute inset-0 h-full w-full object-cover motion-reduce:hidden"
+      src="/videos/hero-scroll-compact.mp4"
+      className={`absolute inset-0 h-full w-full motion-reduce:hidden ${
+        isLogoVisible ? "object-contain md:object-cover" : "object-cover"
+      }`}
       onLoadedMetadata={(event) => {
         applyPlaybackRate(event.currentTarget);
         syncLogoVisibility(event.currentTarget);
