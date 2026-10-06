@@ -4,13 +4,13 @@
   "description": "Public website for Koko Atelier Galway.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f8fafc",
-  "theme_color": "#102a43",
+  "background_color": "#000000",
+  "theme_color": "#000000",
   "icons": [
     {
-      "src": "/icons/koko-mark.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "/icons/koko-favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
       "purpose": "maskable"
     }
   ]

@@ -87,7 +87,7 @@ export interface BusinessInfo {
 export const businessInfo: BusinessInfo = {
   name: "Koko Atelier",
   url: siteUrl,
-  logo: `${siteUrl}/icons/koko-mark.svg`,
+  logo: `${siteUrl}/icons/koko-favicon.png`,
   image: [`${siteUrl}/images/hero-video-poster.jpg`],
   telephone: "+353 85 200 9225",
   email: "To be confirmed",

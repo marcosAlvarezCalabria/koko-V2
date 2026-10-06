@@ -42,7 +42,7 @@ describe("site content", () => {
   });
 
   it("provides absolute, local brand assets for search and social previews", () => {
-    expect(businessInfo.logo).toBe(`${siteUrl}/icons/koko-mark.svg`);
+    expect(businessInfo.logo).toBe(`${siteUrl}/icons/koko-favicon.png`);
     expect(businessInfo.image).toEqual([
       `${siteUrl}/images/hero-video-poster.jpg`
     ]);
